@@ -6,6 +6,6 @@ export const Brand = (brand: any): types.Brand => {
         id: brand._id.toString(),
         name: brand.name,
         description: brand.description,
-        url: `${host}/apis/v1/products/${brand._id.toString()}`
+        url: `${host}/apis/v1/brands/${brand._id.toString()}`
     }
 }

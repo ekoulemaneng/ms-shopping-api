@@ -1,6 +1,6 @@
 import * as types from './types'
 import * as models from './models'
-import { StandardResponse } from '../../../types/types'
+import { StandardResponse, EntityDeletedBodyResponse } from '../../../types/types'
 
 export const Brand = (brand: any): types.AddBrandBodiesResponses => {
     return {
@@ -26,6 +26,18 @@ export const BrandNotFound: StandardResponse = {
         'application/json': {
             code: 'BrandNotFound',
             message: 'There is no brand with this id.'
+        }
+    }
+}
+
+export const BrandDeleted = (id: string): EntityDeletedBodyResponse => {
+    return {
+        content: {
+            'application/json': {
+                id,
+                code: 'BrandDeleted',
+                entity: 'brand'
+            }
         }
     }
 }

@@ -8,8 +8,7 @@
     "build": "tsc",
     "types": "openapi-typescript ./src/docs/routes/assets/v1.yaml --output ./src/types/openapi.ts",
     "mock": "prism mock ./src/docs/routes/assets/v1.yaml",
-    "proxy": "prism proxy ./src/docs/routes/assets/v1.yaml http://127.0.0.1:3000/apis/v1",
-    "val": "yaml2json ./src/docs/routes/assets/v1.yaml --pretty --save"
+    "proxy": "prism proxy ./src/docs/routes/assets/v1.yaml http://127.0.0.1:3000/apis/v1"
   },
   "nodemonConfig": {
     "ext": "js, json, ts, *.yaml, *.yml, *.html"
@@ -17,7 +16,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "mongoose": "^6.9.0"
+    "mongoose": "^6.9.0",
+    "validate.js": "^0.13.1"
   },
   "devDependencies": {
     "@stoplight/prism-cli": "^4.10.5",
@@ -30,8 +30,6 @@
     "nodemon": "^2.0.20",
     "openapi-typescript": "^6.1.0",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.4",
-    "validate.js": "^0.13.1",
-    "yamljs": "^0.3.0"
+    "typescript": "^4.9.4"
   }
 }

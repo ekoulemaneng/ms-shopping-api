@@ -1,4 +1,4 @@
-export const addCategory = {
+export const addBrand = {
     body: {
         name: {
             type: 'string',

@@ -2,10 +2,10 @@ import * as responses from './responses'
 import * as types from './types'
 import { StandardResponse, EntityDeletedResponse } from '../../../types/types'
 
-export const getProduct = (product: any): types.GetProductResponses => {
+export const getBrand = (brand: any): types.GetBrandResponses => {
     return {
         status: 200,
-        upload: responses.Product(product)
+        upload: responses.Brand(brand)
     }
 }
 
@@ -16,10 +16,10 @@ export const getBrands = (brands: any[]): types.GetBrandsResponses => {
     }
 }
 
-export const deleteProduct = (id: string): EntityDeletedResponse => {
+export const deleteBrand = (id: string): EntityDeletedResponse => {
     return {
         status: 200,
-        upload: responses.ProductDeleted(id)
+        upload: responses.BrandDeleted(id)
     }
 }
 

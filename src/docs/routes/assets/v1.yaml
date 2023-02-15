@@ -624,7 +624,6 @@ components:
       in: query
       name: min_quantity
       description: Minimum quantity of products
-      required: true
     productMaxQuantity:
       schema:
         type: integer
@@ -632,7 +631,6 @@ components:
       in: query
       name: max_quantity
       description: Maximum quantity of products
-      required: true
     productMinPrice:
       schema:
         type: number
@@ -640,7 +638,6 @@ components:
       in: query
       name: min_price
       description: Minimum price of products
-      required: true
     productMaxPrice:
       schema:
         type: number
@@ -648,7 +645,6 @@ components:
       in: query
       name: max_price
       description: Maximum price of products
-      required: true
     productMinDate:
       schema:
         type: string

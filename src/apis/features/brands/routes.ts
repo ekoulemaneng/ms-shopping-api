@@ -5,10 +5,9 @@ import * as controllers from './controllers'
 import * as types from './types'
 import * as httpResponses from '../../../utils/httpResponses'
 
-
 const router: Router = Router()
 
-router.post('/', /*validate(inputs.addBrand),*/ async (req: Request, res: Response) => {
+router.post('/', /*validate(inputs.addBrand),*/ async (req: Request<never, never, types.AddBrandRequestBody>, res: Response) => {
     try {
         const { name, description } = req.body
         const response: types.AddBrandResponses = await controllers.addBrand(name, description)
@@ -37,7 +36,7 @@ router.get('/', async (req: Request<never, never, never, types.GetBrandsQueryPar
 router.get('/:id', async (req: Request<types.BrandPathParameters>, res: Response) => {
     try {
         const { id } = req.params
-        const response: types.GetProductResponses = await controllers.getProductById(id)
+        const response: types.GetBrandResponses = await controllers.getProductById(id)
         httpResponses.general(res, response)
     }
     catch (error: any) {
@@ -47,11 +46,11 @@ router.get('/:id', async (req: Request<types.BrandPathParameters>, res: Response
 })
 
 // Update a product
-router.patch('/:id', async (req: Request<types.ProductPathParameters, never, types.UpdateProductRequestBody>, res: Response) => {
+router.patch('/:id', async (req: Request<types.BrandPathParameters, never, types.UpdateBrandRequestBody>, res: Response) => {
     try {
         const { id } = req.params
-        const { name, description, category, brand, quantity, price } = req.body
-        const response: types.GetProductResponses = await controllers.updateProduct(id, name, description, category, brand, quantity, price)
+        const { name, description } = req.body
+        const response: types.GetBrandResponses = await controllers.updateProduct(id, name, description)
         httpResponses.general(res, response)
     }
     catch (error: any) {
@@ -61,10 +60,10 @@ router.patch('/:id', async (req: Request<types.ProductPathParameters, never, typ
 })
 
 // Delete a product
-router.delete('/:id', async (req: Request<types.ProductPathParameters>, res: Response) => {
+router.delete('/:id', async (req: Request<types.BrandPathParameters>, res: Response) => {
     try {
         const { id } = req.params
-        const response: types.DeleteProductResponses = await controllers.deleteProduct(id)
+        const response: types.DeleteBrandResponses = await controllers.deleteBrand(id)
         httpResponses.general(res, response)
     }
     catch (error: any) {

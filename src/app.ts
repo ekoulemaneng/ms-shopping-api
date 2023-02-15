@@ -7,8 +7,6 @@ import mongodb from './config/mongodb'
 
 mongodb()
 
-console.log('e:', express)
-
 const app: Application = express()
 
 app.use(cors())
