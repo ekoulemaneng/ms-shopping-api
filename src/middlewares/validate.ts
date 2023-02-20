@@ -3,8 +3,10 @@ import validate from 'validate.js'
 
 function convert (type: string, data: any, inputs: any): void {
     Object.keys(data).forEach((key: string) => {
-        if (inputs[type][key].type === 'boolean') data[key] = Boolean(data[key])
-        else if (['integer', 'number'].includes(inputs[type][key].type)) data[key] = Number(data[key])
+        if (typeof data[key] === 'string') {
+            if (inputs[type][key].type === 'boolean') data[key] = Boolean(data[key].trim()) 
+            else if (['integer', 'number'].includes(inputs[type][key].type)) data[key] = Number(data[key])
+        }
     })
 
 }

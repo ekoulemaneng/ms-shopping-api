@@ -22,7 +22,7 @@ router.post('/', validate(inputs.addProduct), async (req: Request<never, never, 
 })
 
 // Retrieve many products by using filter
-router.get('/', async (req: Request<never, never, never, types.GetProductsQueryParameters>, res: Response) => {
+router.get('/', validate(inputs.getProducts), async (req: Request<never, never, never, types.GetProductsQueryParameters>, res: Response) => {
     try {
         const { name, description, category, brand, min_quantity, max_quantity, min_price, max_price, min_date, max_date } = req.query
         const response: types.GetProductsResponses = await controllers.getProducts(name, description, category, brand, min_quantity, max_quantity, min_price, max_price, min_date, max_date)
@@ -35,7 +35,7 @@ router.get('/', async (req: Request<never, never, never, types.GetProductsQueryP
 })
 
 // Get a product by id
-router.get('/:id', async (req: Request<types.ProductPathParameters>, res: Response) => {
+router.get('/:id', validate(inputs.getProduct), async (req: Request<types.ProductPathParameters>, res: Response) => {
     try {
         const { id } = req.params
         const response: types.GetProductResponses = await controllers.getProductById(id)
@@ -48,7 +48,7 @@ router.get('/:id', async (req: Request<types.ProductPathParameters>, res: Respon
 })
 
 // Update a product
-router.patch('/:id', async (req: Request<types.ProductPathParameters, never, types.UpdateProductRequestBody>, res: Response) => {
+router.patch('/:id', validate(inputs.updateProduct), async (req: Request<types.ProductPathParameters, never, types.UpdateProductRequestBody>, res: Response) => {
     try {
         const { id } = req.params
         const { name, description, category, brand, quantity, price } = req.body
@@ -62,7 +62,7 @@ router.patch('/:id', async (req: Request<types.ProductPathParameters, never, typ
 })
 
 // Delete a product
-router.delete('/:id', async (req: Request<types.ProductPathParameters>, res: Response) => {
+router.delete('/:id', validate(inputs.deleteProduct), async (req: Request<types.ProductPathParameters>, res: Response) => {
     try {
         const { id } = req.params
         const response: types.DeleteProductResponses = await controllers.deleteProduct(id)
